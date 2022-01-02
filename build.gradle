@@ -1,0 +1,51 @@
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("io.spring.javaformat:spring-javaformat-gradle-plugin:0.0.29")
+    }
+}
+
+plugins {
+    id 'java'
+    id "io.freefair.lombok" version "6.3.0"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    group = 'com.github.ehayik.playground'
+    version = '0.0.1'
+    description = 'Spring webflux hands on'
+
+    apply plugin: 'java'
+    apply plugin: "io.freefair.lombok"
+    apply plugin: 'io.spring.javaformat'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation(platform("org.springframework.boot:spring-boot-dependencies:2.6.0"))
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        testImplementation 'io.projectreactor:reactor-test'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}

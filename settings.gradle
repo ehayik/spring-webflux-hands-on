@@ -1,0 +1,8 @@
+
+rootProject.name = 'spring-webflux-hands-on'
+include 'reactive-domain'
+include 'reactive-domain-mongodb'
+include 'web-app'
+include 'func-web-app'
+include 'webclient-app'
+
